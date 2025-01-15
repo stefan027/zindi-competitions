@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>training.data API documentation</title>
+<meta name="description" content="Data functions">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>training.data</code></h1>
+</header>
+<section id="section-intro">
+<p>Data functions</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="training.data.create_dataloaders"><code class="name flex">
+<span>def <span class="ident">create_dataloaders</span></span>(<span>df_train, df_valid, tokenizer, bs=32, src_lang='dyu_Latn', tgt_lang='fra_Latn', preproc_func=None, max_length=128, validation_bs=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A convenience function to create fastai <code>Dataloaders</code> for the Dyula to French
+translation task.</p>
+<h2 id="args">Args</h2>
+<p>df_train (<code>pandas.DataFrame</code>):
+The training dataframe containing translation pairs.</p>
+<p>df_valid (<code>pandas.DataFrame</code>):
+The validation dataframe containing translation pairs.</p>
+<p>tokenizer (<code>transformers.PreTrainedTokenizer</code>):
+The tokenizer to use for encoding the source and target languages.</p>
+<p>bs (<code>int</code>):
+Batch size for the training dataset. Default is 32.</p>
+<p>src_lang (<code>str</code>):
+The source language code, such as 'dyu_Latn'. Default is 'dyu_Latn'.</p>
+<p>tgt_lang (<code>str</code>):
+The target language code, such as 'fra_Latn'. Default is 'fra_Latn'.</p>
+<p>preproc_func (<code>callable</code>, optional):
+Preprocessing function to apply to each example before tokenization.
+Default is <code>None</code>.</p>
+<p>max_length (<code>int</code>):
+Maximum length for tokenized sequences. Default is 128.</p>
+<p>validation_bs (<code>int</code>, optional):
+Batch size for the validation dataset. Defaults to the training batch size
+if not specified.</p>
+<h2 id="returns">Returns</h2>
+<p><code>fastai.DataLoaders</code>:
+A <code>DataLoaders</code> object for training and validation datasets.</p></div>
+</dd>
+<dt id="training.data.ds2df"><code class="name flex">
+<span>def <span class="ident">ds2df</span></span>(<span>ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts a HuggingFace <code>datasets.dataset_dict.DatasetDict</code> to a <code>pandas.DataFrame</code>.</p>
+<h2 id="args">Args</h2>
+<p>ds (<code>datasets.dataset_dict.DatasetDict</code>):
+The dataset dictionary containing translation data.</p>
+<h2 id="returns">Returns</h2>
+<p><code>pandas.DataFrame</code>:
+A DataFrame containing the translations with columns for 'dyu', 'fr', and the
+dataset split.</p></div>
+</dd>
+<dt id="training.data.load_from_json"><code class="name flex">
+<span>def <span class="ident">load_from_json</span></span>(<span>train_files: str | list, valid_files: str | list = None, test_files: str | list = None, return_format: str = 'ds')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads a dataset from local JSON files into either a <code>datasets.dataset_dict.DatasetDict</code>
+or a <code>pandas.DataFrame</code>.</p>
+<h2 id="args">Args</h2>
+<p>train_files (<code>str</code> | <code>list</code>):
+Path(s) to the training data JSON file(s).</p>
+<p>valid_files (<code>str</code> | <code>list</code>, optional):
+Path(s) to the validation data JSON file(s). Default is None.</p>
+<p>test_files (<code>str</code> | <code>list</code>, optional):
+Path(s) to the test data JSON file(s). Default is None.</p>
+<p>return_format (<code>str</code>):
+The format to return the data in: 'ds' for a <code>datasets.dataset_dict.DatasetDict</code>
+or 'df' for a <code>pandas.DataFrame</code>. Default is 'ds'.</p>
+<h2 id="returns">Returns</h2>
+<p><code>datasets.dataset_dict.DatasetDict</code> or <code>pandas.DataFrame</code>:
+The loaded dataset in the specified format.</p></div>
+</dd>
+<dt id="training.data.save_data_locally"><code class="name flex">
+<span>def <span class="ident">save_data_locally</span></span>(<span>ds, save_dir='./data')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves a dataset locally as JSON files, one for each data split (train, validation, test).</p>
+<h2 id="args">Args</h2>
+<p>ds (<code>datasets.dataset_dict.DatasetDict</code>):
+The dataset dictionary containing the splits to save.</p>
+<p>save_dir (<code>str</code>):
+The directory where the dataset files will be saved. Default is "./data".</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="training.data.TranslationDataset"><code class="flex name class">
+<span>class <span class="ident">TranslationDataset</span></span>
+<span>(</span><span>df, tokenizer, bs=32, is_validation=False, src_lang='dyu_Latn', tgt_lang='fra_Latn', preproc_func=None, max_length=128)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A PyTorch <code>Dataset</code> for the Dyula to French translation task.</p>
+<h2 id="args">Args</h2>
+<p>df (<code>pandas.DataFrame</code>):
+A DataFrame containing the translation data. Each row represents a translation
+pair with the first column being the source text and the second column
+being the target translation.</p>
+<p>tokenizer (<code>transformers.PreTrainedTokenizer</code>):
+The tokenizer to use for encoding the source and target languages.</p>
+<p>bs (<code>int</code>):
+Batch size for the dataset. Default is 32.</p>
+<p>is_validation (<code>bool</code>):
+Flag indicating whether the dataset is used for validation or training.
+If True, batches are sampled sequentially. Default is False.</p>
+<p>src_lang (<code>str</code>):
+The source language code, such as 'dyu_Latn'. Default is 'dyu_Latn'.</p>
+<p>tgt_lang (<code>str</code>):
+The target language code, such as 'fra_Latn'. Default is 'fra_Latn'.</p>
+<p>preproc_func (<code>callable</code>, optional):
+Preprocessing function to apply to each example before tokenization.
+Default is <code>None</code>.</p>
+<p>max_length (<code>int</code>):
+Maximum length for tokenized sequences. Default is 128.</p>
+<h2 id="returns">Returns</h2>
+<p><code><a title="training.data.TranslationDataset" href="#training.data.TranslationDataset">TranslationDataset</a></code>:
+A dataset object used for the Dyula to French translation task.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TranslationDataset(Dataset):
+    &#34;&#34;&#34;
+    A PyTorch `Dataset` for the Dyula to French translation task.
+
+    Args:
+        df (`pandas.DataFrame`):
+            A DataFrame containing the translation data. Each row represents a translation 
+            pair with the first column being the source text and the second column 
+            being the target translation.
+
+        tokenizer (`transformers.PreTrainedTokenizer`):
+            The tokenizer to use for encoding the source and target languages.
+            
+        bs (`int`):
+            Batch size for the dataset. Default is 32.
+        
+        is_validation (`bool`):
+            Flag indicating whether the dataset is used for validation or training.
+            If True, batches are sampled sequentially. Default is False.
+        
+        src_lang (`str`):
+            The source language code, such as &#39;dyu_Latn&#39;. Default is &#39;dyu_Latn&#39;.
+        
+        tgt_lang (`str`):
+            The target language code, such as &#39;fra_Latn&#39;. Default is &#39;fra_Latn&#39;.
+        
+        preproc_func (`callable`, optional):
+            Preprocessing function to apply to each example before tokenization.
+            Default is `None`.
+        
+        max_length (`int`):
+            Maximum length for tokenized sequences. Default is 128.
+
+    Returns:
+        `TranslationDataset`:
+            A dataset object used for the Dyula to French translation task.
+    &#34;&#34;&#34;
+    def __init__(
+        self, df, tokenizer, bs=32, is_validation=False, src_lang=&#34;dyu_Latn&#34;,
+        tgt_lang=&#34;fra_Latn&#34;, preproc_func=None, max_length=128
+    ):
+        self.df = df.copy()
+        self.tokenizer = tokenizer
+        self.is_validation = is_validation
+        self.n = len(df)
+        self.bs = bs
+        if preproc_func is None:
+            self.preproc_func = lambda x: x
+        self.preproc_func = preproc_func
+        self.src_lang, self.tgt_lang = src_lang, tgt_lang
+        self.max_length = max_length
+
+    def __getitem__(self, i):
+        if self.is_validation:
+            idx = list(range(i*self.bs, min(i*self.bs+self.bs, self.n), 1))
+        else:
+            idx = [random.randint(0, self.n-1) for _ in range(self.bs)]
+        b = self.df.iloc[idx]
+        dyu = b.iloc[:, 0].apply(self.preproc_func).tolist()
+        fra = b.iloc[:, 1].apply(self.preproc_func).tolist()
+
+        self.tokenizer.src_lang = self.src_lang
+        x = self.tokenizer(
+            dyu, return_tensors=&#39;pt&#39;, padding=True, truncation=True, max_length=self.max_length
+        )
+        self.tokenizer.src_lang = self.tgt_lang
+        y = self.tokenizer(
+            fra, return_tensors=&#39;pt&#39;, padding=True, truncation=True, max_length=self.max_length
+        )
+        y.input_ids[y.input_ids == self.tokenizer.pad_token_id] = -100
+        x[&#34;labels&#34;] = y.input_ids
+        y[&#34;indexes&#34;] = torch.tensor(idx)
+        return x, y
+
+    def __len__(self):
+        return len(self.df) // self.bs</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="training" href="index.html">training</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="training.data.create_dataloaders" href="#training.data.create_dataloaders">create_dataloaders</a></code></li>
+<li><code><a title="training.data.ds2df" href="#training.data.ds2df">ds2df</a></code></li>
+<li><code><a title="training.data.load_from_json" href="#training.data.load_from_json">load_from_json</a></code></li>
+<li><code><a title="training.data.save_data_locally" href="#training.data.save_data_locally">save_data_locally</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="training.data.TranslationDataset" href="#training.data.TranslationDataset">TranslationDataset</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

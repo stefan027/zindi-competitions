@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>training.modeling API documentation</title>
+<meta name="description" content="Functions to load, initialize models and trainers">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>training.modeling</code></h1>
+</header>
+<section id="section-intro">
+<p>Functions to load, initialize models and trainers</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="training.modeling.create_distillation_learner"><code class="name flex">
+<span>def <span class="ident">create_distillation_learner</span></span>(<span>dls, student_model, teacher_model, tokenizer, src_lang='dyu_Latn', tgt_lang='fra_Latn', wd=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convenience function to create a fastai <code>Learner</code> for distillation learning using a
+<code>teacher_model</code> and <code>student_model</code>.</p>
+<h2 id="args">Args</h2>
+<p>dls (<code>DataLoaders</code>):
+The DataLoaders object containing the training and validation datasets.</p>
+<p>student_model (<code>PreTrainedModel</code>):
+The student model that will be trained in the distillation process.</p>
+<p>teacher_model (<code>PreTrainedModel</code>):
+The teacher model providing the target logits for distillation.</p>
+<p>tokenizer (<code>PreTrainedTokenizer</code>):
+The tokenizer corresponding to the HuggingFace models.</p>
+<p>src_lang (<code>str</code>):
+The source language code for translation. Default is "dyu_Latn".</p>
+<p>tgt_lang (<code>str</code>):
+The target language code for translation. Default is "fra_Latn".</p>
+<p>wd (<code>float</code>, optional):
+The weight decay value used during training. Default is None.</p>
+<h2 id="returns">Returns</h2>
+<p><code>Learner</code>:
+A fastai <code>Learner</code> object configured for distillation learning with
+cross-entropy loss, distillation loss, and BLEU score as a metric.</p></div>
+</dd>
+<dt id="training.modeling.create_learner"><code class="name flex">
+<span>def <span class="ident">create_learner</span></span>(<span>dls, model, tokenizer, src_lang='dyu_Latn', tgt_lang='fra_Latn', wd=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convenience function to create a fastai <code>Learner</code> from a HuggingFace <code>model</code>
+for translation tasks.</p>
+<h2 id="args">Args</h2>
+<p>dls (<code>DataLoaders</code>):
+The DataLoaders object containing the training and validation datasets.</p>
+<p>model (<code>PreTrainedModel</code>):
+A pre-trained HuggingFace model used for translation.</p>
+<p>tokenizer (<code>PreTrainedTokenizer</code>):
+The tokenizer corresponding to the HuggingFace model.</p>
+<p>src_lang (<code>str</code>):
+The source language code for translation. Default is "dyu_Latn".</p>
+<p>tgt_lang (<code>str</code>):
+The target language code for translation. Default is "fra_Latn".</p>
+<p>wd (<code>float</code>, optional):
+The weight decay value used during training. Default is None.</p>
+<h2 id="returns">Returns</h2>
+<p><code>Learner</code>:
+A fastai <code>Learner</code> object configured for training the HuggingFace model
+with cross-entropy loss and BLEU score as a metric.</p></div>
+</dd>
+<dt id="training.modeling.instantiate_small_model"><code class="name flex">
+<span>def <span class="ident">instantiate_small_model</span></span>(<span>base_model_id, dim_factor=4, layer_factor=4, vocab_size=None, encoder_ffn_dim=None, encoder_layers=None, decoder_ffn_dim=None, decoder_layers=None, num_hidden_layers=None, d_model=None, max_position_embeddings=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiates a smaller version the base <code>M2M100ForConditionalGeneration</code> model.
+The function adjusts various configuration parameters such as feed-forward
+dimensions, number of layers, hidden layers, and more.</p>
+<h2 id="args">Args</h2>
+<p>base_model_id (<code>str</code>):
+The identifier of the base model to load from pre-trained models.</p>
+<p>dim_factor (<code>int</code>):
+The factor by which to scale the feed-forward dimensions of the encoder
+and decoder. Default is 4.</p>
+<p>layer_factor (<code>int</code>):
+The factor by which to scale the number of layers in the encoder and
+decoder. Default is 4.</p>
+<p>vocab_size (<code>int</code>, optional):
+The size of the vocabulary. If not provided, the original vocabulary
+size is used.</p>
+<p>encoder_ffn_dim (<code>int</code>, optional):
+Custom feed-forward dimension for the encoder. If not provided, the default
+value is scaled by <code>dim_factor</code>.</p>
+<p>encoder_layers (<code>int</code>, optional):
+Custom number of layers for the encoder. If not provided, the default number
+is scaled by <code>layer_factor</code>.</p>
+<p>decoder_ffn_dim (<code>int</code>, optional):
+Custom feed-forward dimension for the decoder. If not provided, the default
+value is scaled by <code>dim_factor</code>.</p>
+<p>decoder_layers (<code>int</code>, optional):
+Custom number of layers for the decoder. If not provided, the default number
+is scaled by <code>layer_factor</code>.</p>
+<p>num_hidden_layers (<code>int</code>, optional):
+Custom number of hidden layers. If not provided, the default number is scaled
+by <code>layer_factor</code>.</p>
+<p>d_model (<code>int</code>, optional):
+Custom size of the model's hidden states. If not provided, the default size
+is scaled by <code>dim_factor</code>.</p>
+<p>max_position_embeddings (<code>int</code>, optional):
+Custom maximum position embeddings. If not provided, the default number is
+scaled by <code>dim_factor</code>.</p>
+<h2 id="returns">Returns</h2>
+<p><code>M2M100ForConditionalGeneration</code>:
+The modified model with updated configuration, loaded on CUDA.</p></div>
+</dd>
+<dt id="training.modeling.load_model"><code class="name flex">
+<span>def <span class="ident">load_model</span></span>(<span>model_id, load_tokenizer=True, tokenizer_id=None, remap_embeddings=False, init_embeds_for_new_tokens=False, old_tokenizer_id=None, torch_dtype=torch.float32, src_language=None, tgt_language=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads a pretrained model and, optionally, a tokenizer. Optionally remaps model
+embeddings if a different tokenizer is used.</p>
+<h2 id="args">Args</h2>
+<p>model_id (<code>str</code>):
+Path or ID of the pretrained model to load.</p>
+<p>load_tokenizer (<code>bool</code>):
+Whether to load and return a pretrained tokenizer. Default is True.</p>
+<p>tokenizer_id (<code>str</code>, optional):
+Path or ID of the tokenizer to load. Defaults to <code>model_id</code> if not specified.</p>
+<p>remap_embeddings (<code>bool</code>):
+Whether to remap embeddings if a different tokenizer is used than the one the
+model was originally trained with. Default is False.</p>
+<p>init_embeds_for_new_tokens (<code>bool</code>):
+If True, generates random embeddings for tokens present in the
+new tokenizer but absent in the old tokenizer. If False, these
+new tokens will inherit the embedding of the <unk> token.
+Default is False.</p>
+<p>old_tokenizer_id (<code>str</code>, optional):
+Path or ID of the tokenizer that was originally used to train the model.
+Only relevant if <code>remap_embeddings</code> is True.</p>
+<p>torch_dtype (<code>torch.dtype</code>):
+The data type to load the model with. Default is <code>torch.float32</code>.</p>
+<p>src_language (<code>str</code>, optional):
+The source language code for the tokenizer. Either 'dyu_Latn' or 'fra_Latn'.</p>
+<p>tgt_language (<code>str</code>, optional):
+The target language code for the tokenizer. Either 'dyu_Latn' or 'fra_Latn'.</p>
+<h2 id="returns">Returns</h2>
+<p><code>transformers.AutoModelForSeq2SeqLM</code>:
+The pretrained model, optionally with remapped embeddings.</p>
+<p><code>transformers.NllbTokenizer</code>, optional:
+The pretrained tokenizer, if <code>load_tokenizer</code> is True.</p></div>
+</dd>
+<dt id="training.modeling.prune"><code class="name flex">
+<span>def <span class="ident">prune</span></span>(<span>model, reduce_dims=True, reduce_layers=True, size_factor=4, target_dims=[1024, 2048, 4096], dim_strategy='average', layer_size_factor=3, layer_strategy='alternate')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prunes the given <code>model</code> by reducing its dimensions and/or the number of layers,
+based on the specified factors.</p>
+<h2 id="args">Args</h2>
+<p>model (<code>M2M100ForConditionalGeneration</code>):
+The pre-trained model to prune.</p>
+<p>reduce_dims (<code>bool</code>):
+Whether to reduce the model's dimensions (e.g., feed-forward dimensions
+and hidden states). Default is True.</p>
+<p>reduce_layers (<code>bool</code>):
+Whether to reduce the number of layers in the model. Default is True.</p>
+<p>size_factor (<code>int</code>):
+The factor by which to reduce dimensions in the model. Default is 4.</p>
+<p>target_dims (<code>list[int]</code>):
+A list of dimensions in the model to be reduced by the <code>size_factor</code>.
+Default is [1024, 2048, 4096].</p>
+<p>dim_strategy (<code>str</code>):
+The strategy for reducing dimensions ("average", "alternatee", "random").
+Default is "average".</p>
+<p>layer_size_factor (<code>int</code>):
+The factor by which to reduce the number of layers in the model. Default is 3.</p>
+<p>layer_strategy (<code>str</code>):
+The strategy for reducing layers ("average", "alternate"). Default is "alternate".</p>
+<h2 id="returns">Returns</h2>
+<p><code>M2M100ForConditionalGeneration</code>:
+The pruned model with updated configuration, loaded on CUDA.</p></div>
+</dd>
+<dt id="training.modeling.remap_model_embeddings"><code class="name flex">
+<span>def <span class="ident">remap_model_embeddings</span></span>(<span>model, tokenizer, tokenizer_old, init_embeds_for_new_tokens=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remaps the embedding weights of a <code>model</code> that was trained with <code>tokenizer_old</code>
+to match the positions of the tokens in a new vocabulary provided by <code>tokenizer</code>.</p>
+<h2 id="args">Args</h2>
+<p>model (<code>transformers.M2M100ForConditionalGeneration</code>):
+The HuggingFace model to have its embeddings remapped.</p>
+<p>tokenizer (<code>transformers.NllbTokenizer</code>):
+The tokenizer that provides the new vocabulary for the model.</p>
+<p>tokenizer_old (<code>transformers.NllbTokenizer</code>):
+The tokenizer that was originally used to train the model.</p>
+<p>init_embeds_for_new_tokens (<code>bool</code>):
+If True, generates random embeddings for tokens present in the
+new tokenizer but absent in the old tokenizer. If False, these
+new tokens will inherit the embedding of the <unk> token.</p>
+<h2 id="returns">Returns</h2>
+<p><code>transformers.M2M100ForConditionalGeneration</code>:
+The model with remapped embeddings, loaded on CUDA, with potentially
+new random embeddings for new tokens.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="training.modeling.AdaptedModel"><code class="flex name class">
+<span>class <span class="ident">AdaptedModel</span></span>
+<span>(</span><span>model)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A basic wrapper around a HuggingFace model that modifies the output to only
+return the logits.</p>
+<h2 id="args">Args</h2>
+<p>model (<code>PreTrainedModel</code>):
+A pre-trained HuggingFace model to be wrapped.
+Initialize internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AdaptedModel(nn.Module):
+    &#34;&#34;&#34;
+    A basic wrapper around a HuggingFace model that modifies the output to only\
+    return the logits.
+
+    Args:
+        model (`PreTrainedModel`):
+            A pre-trained HuggingFace model to be wrapped.
+    &#34;&#34;&#34;
+    def __init__(self, model):
+        super().__init__()
+        self.hf_model = model
+
+    def forward(self, inputs):
+        return self.hf_model(**inputs).logits</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="training.modeling.AdaptedModel.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, inputs) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+</dd>
+</dl>
+</dd>
+<dt id="training.modeling.DistilLoss"><code class="flex name class">
+<span>class <span class="ident">DistilLoss</span></span>
+<span>(</span><span>vocab_size, temperature=2.0, alpha=0.5)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculates the distillation loss</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DistilLoss:
+    &#34;&#34;&#34;
+    Calculates the distillation loss
+    &#34;&#34;&#34;
+    def __init__(self, vocab_size, temperature=2., alpha=0.5):
+        self.vocab_size = vocab_size
+        self.temperature = temperature
+        self.alpha = alpha
+        self.distil_loss_func = nn.KLDivLoss(reduction=&#34;batchmean&#34;)
+
+    def lm_loss(self, lm_logits, labels):
+        labels = labels[&#34;input_ids&#34;]
+        return nn.CrossEntropyLoss()(lm_logits.view(-1, self.vocab_size), labels.view(-1))
+
+    def __call__(self, logits, labels):
+        student_logits, teacher_logits = logits
+        assert student_logits.shape == teacher_logits.shape
+        student_loss = self.lm_loss(student_logits, labels)
+        distil_loss = self.distil_loss_func(
+            F.log_softmax(student_logits / self.temperature, dim=-1),
+            F.softmax(teacher_logits / self.temperature, dim=-1) * (self.temperature ** 2)
+        )
+        return self.alpha * student_loss + (1. - self.alpha) * distil_loss</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="training.modeling.DistilLoss.lm_loss"><code class="name flex">
+<span>def <span class="ident">lm_loss</span></span>(<span>self, lm_logits, labels)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="training.modeling.DistilModel"><code class="flex name class">
+<span>class <span class="ident">DistilModel</span></span>
+<span>(</span><span>student_model, teacher_model)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A wrapper around HuggingFace models used for distillation training.
+Given a <code>student_model</code> and a <code>teacher_model</code>, it returns a tuple
+containing the logits from both models.</p>
+<h2 id="args">Args</h2>
+<p>student_model (<code>PreTrainedModel</code>):
+The student model used for distillation training.</p>
+<p>teacher_model (<code>PreTrainedModel</code>):
+The teacher model used for distillation training, whose logits
+are returned without gradient updates.
+Initialize internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DistilModel(nn.Module):
+    &#34;&#34;&#34;
+    A wrapper around HuggingFace models used for distillation training. 
+    Given a `student_model` and a `teacher_model`, it returns a tuple
+    containing the logits from both models.
+
+    Args:
+        student_model (`PreTrainedModel`):
+            The student model used for distillation training.
+        
+        teacher_model (`PreTrainedModel`):
+            The teacher model used for distillation training, whose logits
+            are returned without gradient updates.
+    &#34;&#34;&#34;
+    def __init__(self, student_model, teacher_model):
+        super().__init__()
+        self.student_model = student_model
+        self.teacher_model = teacher_model
+
+    def forward(self, inputs):
+        student_logits = self.student_model(**inputs).logits
+        with torch.no_grad():
+            teacher_logits = self.teacher_model(**inputs).logits
+        return tuple((student_logits, teacher_logits))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="training.modeling.DistilModel.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, inputs) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="training" href="index.html">training</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="training.modeling.create_distillation_learner" href="#training.modeling.create_distillation_learner">create_distillation_learner</a></code></li>
+<li><code><a title="training.modeling.create_learner" href="#training.modeling.create_learner">create_learner</a></code></li>
+<li><code><a title="training.modeling.instantiate_small_model" href="#training.modeling.instantiate_small_model">instantiate_small_model</a></code></li>
+<li><code><a title="training.modeling.load_model" href="#training.modeling.load_model">load_model</a></code></li>
+<li><code><a title="training.modeling.prune" href="#training.modeling.prune">prune</a></code></li>
+<li><code><a title="training.modeling.remap_model_embeddings" href="#training.modeling.remap_model_embeddings">remap_model_embeddings</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="training.modeling.AdaptedModel" href="#training.modeling.AdaptedModel">AdaptedModel</a></code></h4>
+<ul class="">
+<li><code><a title="training.modeling.AdaptedModel.forward" href="#training.modeling.AdaptedModel.forward">forward</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="training.modeling.DistilLoss" href="#training.modeling.DistilLoss">DistilLoss</a></code></h4>
+<ul class="">
+<li><code><a title="training.modeling.DistilLoss.lm_loss" href="#training.modeling.DistilLoss.lm_loss">lm_loss</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="training.modeling.DistilModel" href="#training.modeling.DistilModel">DistilModel</a></code></h4>
+<ul class="">
+<li><code><a title="training.modeling.DistilModel.forward" href="#training.modeling.DistilModel.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

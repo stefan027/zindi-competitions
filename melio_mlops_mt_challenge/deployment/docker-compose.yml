@@ -1,0 +1,15 @@
+version: "3.10"
+services:
+  translation_inference_util:
+    container_name: translation_inference_util
+    image: local/dyu-fr-inference:latest
+    platform: linux/amd64
+    command: --model_name=model
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '2G'
