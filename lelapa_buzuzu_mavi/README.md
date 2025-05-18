@@ -2,8 +2,6 @@
 
 This repository contains code and resources for the Lelapa AI Buzuzu-Mavi Challenge, aimed at creating smaller and smarter language models for African languages, specifically Swahili and Hausa. Below is a guide to setting up the environment, running the code, and understanding the workflow.
 
----
-
 ## Folder Structure and File Locations
 
 - **`requirements_buzuzu_mavi.txt`**: Dependencies to be installed.
@@ -25,16 +23,12 @@ This repository contains code and resources for the Lelapa AI Buzuzu-Mavi Challe
   - vulavula_inkuba_instruct_tokenizer8k_pruned_v4.pth
   - vulavula_inkuba_instruct_tokenizer60k_pruned.pth
 
----
-
 ## Approach
 InkubaLM has 420M parameters. With a vocabulary of 61,788 and embedding dimension of 2048, it means the first and last layers of the model alone account for 253M parameters, or 60% of the total number of parameters. In contrast, each hidden layer consists of only 16M parameters. Therefore, to make the model materially smaller, the number of parameters in the first and last layers must be reduced. My approach consisted of the following:
  1. Reduce the vocabulary size by only keeping frequently occuring tokens. The vocabulary size was reduced to 8,064 tokens. This change alone reduces the number of parameters by 220M parameters. InkubaLM's parameter weights are kept - we simply remove tokens that don't occur frequently and let the tokenizer fall back to smaller units.
  2. Reduce the dimension of all layers by a factor of two. For example, all 2048x2048 parameter tensors become 1024x1024. The pruning is achieved by randomly eliminating parameters.
  3. Alter the architecture so that the first embedding layer and the final prediction layer share the same parameters.
  4. (Optional): Reduce the number of hidden layers from 8 to 6. The code is written to always keep the first _N_ layers.
-
----
 
 ## Trained models
 
@@ -87,8 +81,6 @@ Run the notebooks in the following order:
   - Make sure `output_path` and `data_path` are correct.
   
 
----
-
 ## Environment Setup
 
 Use the provided `requirements_buzuzu_mavi.txt` file to set up the environment with `pip`:
@@ -97,10 +89,11 @@ Use the provided `requirements_buzuzu_mavi.txt` file to set up the environment w
 pip install -r requirements_buzuzu_mavi.txt
 ```
 
----
-
 ## Hardware Requirements
 
 The models were trained on Paperspace Gradient notebooks with a NVIDIA A6000 GPU.
 
----
+## Credit
+I learned a lot from the [source code](https://github.com/rasbt/LLMs-from-scratch/tree/main) that accompanies the book [Build a Large Language Model (From Scratch) by Sebastian Raschka](https://www.amazon.com/Build-Large-Language-Model-Scratch/dp/1633437167?crid=228R4JI0P0QFR&dib=eyJ2IjoiMSJ9.XvZyIer9iV133BWXqNiVt_OOJXZheO54dvZtQly8MC25PNYZrN3OWsGLjbg3I0G9hI3LkjwhsORxvHIob3nvCZFgdSSQEFe07VkehijGxT03n4Amdw7lnXxnsOUuWXeglfHnewCcV3DjL9zWHELfh5DG1ZErzFym3S6ZxSuFzNvoPkaq0uDlD_CKwqHdC0KM_RdvIqF0_2RudgvzRli0V155KkusHRck3pG7ybp5VyqKDC_GgL_MEywLwLhFgX6kOCgV6Rq90eTgSHFd6ac8krpIYjsHWe6H3IXbfKGvMXc.473O1-iUZC0z2hdx8L5Z5ZTNxtNV9gNPw_mE7QZ5Y90&dib_tag=se&keywords=raschka&qid=1730250834&sprefix=raschk,aps,162&sr=8-1&linkCode=sl1&tag=rasbt03-20&linkId=84ee23afbd12067e4098443718842dac&language=en_US&ref_=as_li_ss_tl). My training code is heavily influenced by [this notebook](https://github.com/rasbt/LLMs-from-scratch/tree/main/ch07/01_main-chapter-code) from the repo.
+
+> Raschka, Sebastian. Build A Large Language Model (From Scratch). Manning, 2024. ISBN: 978-1633437166.
