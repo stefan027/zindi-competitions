@@ -51,6 +51,3 @@ The following models were trained:
 All three models were submitted during the competition. The `50M` and `100M` models were my two selections for consideration. The `100M` was identified by the private LB as the best-performing, but that did not take the number of parameters into account. I believe that the `50M` model was the best submission when the number of parameters are considered.
 
 The `40M` could not be considered for the competition because it wasn't one of my two selected submissions. I only trained it right at the end of the competition and didn't have time to test it thoroughly, and was therefore hesitant to select it as a submission. For me this is the most exciting model because it is both the smallest and most performant. Additionally, for the `40M` model, I used a two-stage training process where it was first fine-tuned on translation data only, and then further fine-tuned on all three tasks. It makes the model particularly strong at translation while still performing well on the other tasks.
-
-## Code
-All the code is on Github: .
